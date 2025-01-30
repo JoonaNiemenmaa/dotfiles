@@ -1,0 +1,64 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        colors = true 
+        interval = 5
+	markup = "pango"
+}
+
+#order += "ipv6"
+order += "wireless _first_"
+order += "ethernet _first_"
+order += "battery all"
+#order += "disk /"
+#order += "memory"
+order += "tztime local"
+
+wireless _first_ {
+	#format_up = "  %qualit at %essid"
+	#format_down = "  down"
+	
+	color_good = "#9ece6a"
+	color_bad = "#f7768e"
+
+	format_up = "WIFI %qualit at %essid"
+	format_down = "WIFI down"
+	
+	#format_up = "<span color='#0051ff'> </span> <span background='#0051ff'> %qualit at %essid </span>"
+	#format_down = "<span color='#996633'> </span> <span background='#996633'> down </span>"
+}
+
+ethernet _first_ {
+
+	color_good = "#9ece6a"
+	color_bad = "#f7768e"
+
+        format_up = "ETHERNET %ip (%speed)"
+        format_down = "ETHERNET down"
+}
+
+battery all {
+        format = "%status %percentage %remaining"
+}
+
+disk "/" {
+        format = " %avail / %total"
+	#format = "<span color='#996633'> </span> <span background='#996633'> %avail / %total </span>"
+}
+
+memory {
+        format = " %used / %available"
+	#format = "<span color='#996633'> </span> <span background='#996633'> %used / %available </span>"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "  %a %b %d/%m/%Y %H:%M"
+}
