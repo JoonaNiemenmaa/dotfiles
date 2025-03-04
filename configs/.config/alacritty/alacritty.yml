@@ -109,6 +109,9 @@
   # Scrolling distance multiplier.
   #multiplier: 3
 
+font:
+  size: 8.0
+
 # Font configuration
 #font:
   # Normal (roman) font face
